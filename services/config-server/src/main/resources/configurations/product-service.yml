@@ -1,0 +1,39 @@
+server:
+  port: 8050
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/product
+    username: john
+    password: john
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-description: "init"
+    baseline-version: 0
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+
+application:
+  config:
+    inventory-url: http://localhost:8060/api/v1/inventory
+
+#logging:
+#  level:
+#    # Log your Feign client class
+#    com.johnakins.product.inventory.InventoryClient: DEBUG
+#    # Log Feign client internals
+#    feign.Client: DEBUG
+#    feign.Logger: DEBUG
+#
+#feign:
+#  client:
+#    config:
+#      default:
+#        # Log full HTTP request and response
+#        loggerLevel: FULL
